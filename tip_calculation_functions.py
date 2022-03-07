@@ -1,26 +1,49 @@
 def  take_info():
-    cost_of_food= (float(input("What is the total cost of the food bill ?\n$")))
+    validate_cost_of_food=False
+    while validate_cost_of_food == False:
+      try:
+        #Take cost of food
+        cost_of_food= (float(input("What is the total cost of the food bill ?\n$")))
+        if cost_of_food>0 and cost_of_food==type(float):
+          validate_cost_of_food=True
+        else:
+          print("Enter a number of the food bill")
+      except ValueError:
+        print("Enter the correct value")
    
-    # Takes input Number of people splitting the bill 
-    num_of_people=(float(input("How many people are paying the food bill ?(Don't enter 0)\nPeople: ")))
-
+  
+    #In case user enters an invalid number of people
+    #Loop until valid number of people is entered
+    validate_num_of_people=False
+    while validate_num_of_people==False:
+      try:
+          # Takes input Number of people splitting the bill 
+          num_of_people=(int(input("How many people are paying the food bill ?\nPeople: ")))
+          if num_of_people>0:
+           validation=True
+          else:
+            print("Enter number > 0")
+          # In case user enters an invalid number of people
+      except ValueError:
+        print("\nInvalid Value Entry\n")
     # Takes input of percentage of the tip and uses the input to find the tip amount
     tip_percentage=(input("What percentage would you like to tip ?\n"))
     tip_percentage=float(f"0.{tip_percentage}")
     tip_amount = float(tip_percentage * cost_of_food)
 
     return cost_of_food,num_of_people,tip_amount
-
+#Function that calculates the solutions using the users input from the take info function
 def bill_calc(cost_of_food,num_of_people,tip_amount):
          #Takes the total bill and calculates the sales tax
-         sales_tax = ((float(cost_of_food * .10)))
+          sales_tax = ((float(cost_of_food * .10)))
 
          #Calculates the total cost and bill
-         total_bill=float((cost_of_food + sales_tax + tip_amount))
-         split_cost= float(total_bill / num_of_people)
-
-         return num_of_people,total_bill,split_cost
-
+          total_bill=float((cost_of_food + sales_tax + tip_amount))
+        
+          split_cost= float(total_bill / num_of_people)
+           
+          return num_of_people,total_bill,split_cost
+#Function that prints the calculations of the calculator
 def print_calculations(num_of_people,total_bill,split_cost):
         if num_of_people ==1:
           print(f"\nTotal Bill: {total_bill:.2f}".format())
