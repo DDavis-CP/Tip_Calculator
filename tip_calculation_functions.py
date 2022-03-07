@@ -59,7 +59,7 @@ def print_calculations(num_of_people,total_bill,split_cost):
         if num_of_people ==1:
           print(f"\nTotal Bill: {total_bill:.2f}".format())
         elif num_of_people > 1:
-          print(f"Total Bill: {total_bill:.2f}".format())
-          print(f"\nEach Person Pays: {split_cost:.2f}".format())
+          print(f"Total Bill: ${total_bill:.2f}".format())
+          print(f"\nEach Person Pays: ${split_cost:.2f}".format())
 
           
