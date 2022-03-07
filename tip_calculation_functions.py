@@ -4,14 +4,13 @@ def  take_info():
       try:
         #Take cost of food
         cost_of_food= (float(input("What is the total cost of the food bill ?\n$")))
-        if cost_of_food>0 and cost_of_food==type(float):
+        if cost_of_food>0:
           validate_cost_of_food=True
         else:
-          print("Enter a number of the food bill")
+          print("Invalid Entry")
       except ValueError:
-        print("Enter the correct value")
+        print("Invalid Value Entry")
    
-  
     #In case user enters an invalid number of people
     #Loop until valid number of people is entered
     validate_num_of_people=False
@@ -20,14 +19,26 @@ def  take_info():
           # Takes input Number of people splitting the bill 
           num_of_people=(int(input("How many people are paying the food bill ?\nPeople: ")))
           if num_of_people>0:
-           validation=True
+           validate_num_of_people=True
           else:
             print("Enter number > 0")
           # In case user enters an invalid number of people
       except ValueError:
-        print("\nInvalid Value Entry\n")
+        print("Invalid Value Entry")
     # Takes input of percentage of the tip and uses the input to find the tip amount
-    tip_percentage=(input("What percentage would you like to tip ?\n"))
+    validate_tip_percentage=False
+    while validate_tip_percentage==False:
+      try:
+         tip_percentage=(int(input("What percentage would you like to tip ?\n")))
+         if tip_percentage>0:
+          validate_tip_percentage=True
+         else:
+          print("Invalid Entry")
+      except ValueError:
+        print("Invalid value entry")
+
+
+
     tip_percentage=float(f"0.{tip_percentage}")
     tip_amount = float(tip_percentage * cost_of_food)
 
