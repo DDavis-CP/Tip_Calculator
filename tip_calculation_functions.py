@@ -30,7 +30,7 @@ def  take_info():
     while validate_tip_percentage==False:
       try:
          tip_percentage=(int(input("What percentage would you like to tip ?\n")))
-         if tip_percentage>0:
+         if tip_percentage>=0:
           validate_tip_percentage=True
          else:
           print("Invalid Entry")
